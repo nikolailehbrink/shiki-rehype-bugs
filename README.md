@@ -1,40 +1,21 @@
-# Welcome to Remix!
+# Demo project for bugs with @shikijs/rehype
 
-- 📖 [Remix docs](https://remix.run/docs)
+This is a demo project to reproduce the bugs with @shikijs/rehype that I have with a project in remix.
 
-## Development
+## Bug 1: options.meta only outputs \_\_raw
 
-Run the dev server:
+The first bug is that the `options.meta` only outputs the `__raw` string and not the actual meta key value pairs. This is a problem because I have to parse them manually now.
 
-```shellscript
-npm run dev
-```
+### Steps to reproduce
 
-## Deployment
+1. Go to /test -> see the code block
+2. Open the console, where options.meta is logged
 
-First, build your app for production:
+## Bug 2: postprocess in transformer is not working/called
 
-```sh
-npm run build
-```
+The second bug is that the `postprocess` function in the transformer is not working or not called. When I log something from the function it is never shown in the console.
 
-Then run the app in production mode:
+### Steps to reproduce
 
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+1. Go to /test -> see the code block
+2. Open the console, where the postprocess function should be logged, nothing is there.
